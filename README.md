@@ -1,5 +1,7 @@
 ## emotion-ratings
-This plugin allows you to create ratings using emoji
+This plugin allows you to create ratings using emojis!
+Preview:
+![emotion ratings](https://raw.githubusercontent.com/YanNerio/emotion-ratings/master/preview/previewred.gif)
 
 ## Usage
 1. Include jQuery >=1.9:
@@ -25,7 +27,7 @@ This plugin allows you to create ratings using emoji
 	    color: 'pink'
 	  });
 	```
-	
+
 ## License
 
 [MIT License](http://yancinerio.mit-license.org/) © Yanci Nerio
