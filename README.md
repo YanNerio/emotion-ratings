@@ -1,7 +1,10 @@
 ## emotion-ratings
 This plugin allows you to create ratings using emojis!
+
 Preview:
+
 ![emotion ratings](https://raw.githubusercontent.com/YanNerio/emotion-ratings/master/preview/previewred.gif)
+
 
 ## Usage
 1. Include jQuery >=1.9:
