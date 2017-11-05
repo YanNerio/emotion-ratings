@@ -22,6 +22,7 @@
         bgEmotion: "happy",
         emotionsCollection: ['angry','disappointed','meh', 'happy', 'inLove'],
         count: 5,
+        color: "red",
         emotionSize: 30,
         inputName: "rating",
         emotionOnUpdate: null
@@ -40,7 +41,18 @@
           crying: "&#x1F622;",
           star: "&#x2B50;",
         };
-    
+    //the collection of emotions to show on the ratings
+    var colorsArray = {
+            gold: "#d0a658;",
+            red: "#cb2a2a;",
+            blue: "#337ab7;", 
+            green: "#26bf78;",
+            black: "#00000;",
+            brown: "#916a3a;",
+            pink: "#f21f6d;",
+            purple: "#ba27bd",
+            orange: "#f89e5e;"
+    };
     var clicked = false;
 
     // Plugin constructor
@@ -68,7 +80,7 @@
         },
         emotionStyle: function() {
             var styles = ".emotion-style{margin-right:3px;border-radius: 50%;cursor:pointer;opacity:0.3;display: inline-block;font-size:"
-                 + this.settings.emotionSize +"px; text-decoration:none;line-height:0.9;text-align: center;color:#d0a658}";
+                 + this.settings.emotionSize +"px; text-decoration:none;line-height:0.9;text-align: center;color:"+colorsArray[this.settings.color]+"}";
             $element.append("<style>" + styles + "</style>");
         },
         renderEmotion: function () {
