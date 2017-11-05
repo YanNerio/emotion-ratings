@@ -27,7 +27,6 @@
     }
   ],
   "bugs": "https://github.com/YanNerio/emotion-ratings/issues",
-  // "homepage": "http://yancinerio.com/emotion-ratings",
   "docs": "https://github.com/YanNerio/emotion-ratings#readme",
   "download": "https://github.com/Yannerio/emotion-ratins/archive/master.zip",
   "dependencies": {
