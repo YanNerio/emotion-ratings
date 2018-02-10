@@ -12,17 +12,18 @@
  */
 
 ;(function($, document, window, undefined) {
-
+    // Optional, but considered best practice by some
     "use strict";
 
+    // Name the plugin so it's only in one place
     var pluginName = 'emotionsRating';
     var $element;
-    // Default options for the plugin
+    // Default options for the plugin as a simple object
     var defaults = {
         bgEmotion: "happy",
         emotionsCollection: ['angry','disappointed','meh', 'happy', 'inLove'],
         count: 5,
-        color: "red",
+        color: "#d0a658;",
         emotionSize: 30,
         inputName: "rating",
         emotionOnUpdate: null
@@ -42,27 +43,37 @@
           star: "&#x2B50;",
         };
     //the collection of emotions to show on the ratings
-    var colorsArray = {
-            gold: "#d0a658;",
-            red: "#cb2a2a;",
-            blue: "#337ab7;", 
-            green: "#26bf78;",
-            black: "#00000;",
-            brown: "#916a3a;",
-            pink: "#f21f6d;",
-            purple: "#ba27bd",
-            orange: "#f89e5e;"
-    };
+    // var colorsArray = {
+    //     gold: "#d0a658;",
+    //     red: "#cb2a2a;",
+    //     blue: "#337ab7;", 
+    //     green: "#26bf78;",
+    //     black: "#00000;",
+    //     brown: "#916a3a;",
+    //     pink:   "#f21f6d;",
+    //     purple: "#ba27bd",
+    //     orange: "#f89e5e;",
+    //     yellow: "#f6ef33;"
+    // };
     var clicked = false;
-
     // Plugin constructor
+    // This is the boilerplate to set up the plugin to keep our actual logic in one place
     function Plugin(element, options) {
         this.element = element;
         // Merge the options given by the user with the defaults
         this.settings = $.extend( {}, defaults, options );
+
+        // Attach data to the element
+        this.$el      = $(element);
+        this.$el.data(name, this);
+
         this._defaults = defaults;
         this._name = pluginName;
+
+        var meta      = this.$el.data(name + '-opts');
+        this.opts     = $.extend(this._defaults, options, meta);
         this.init();
+        console.log(this.settings);
     }
     
     //Avoiding conflicts with prototype
@@ -79,8 +90,9 @@
             this.manageClick();
         },
         emotionStyle: function() {
+
             var styles = ".emotion-style{margin-right:3px;border-radius: 50%;cursor:pointer;opacity:0.3;display: inline-block;font-size:"
-                 + this.settings.emotionSize +"px; text-decoration:none;line-height:0.9;text-align: center;color:"+colorsArray[this.settings.color]+"}";
+                 + this.settings.emotionSize +"px; text-decoration:none;line-height:0.9;text-align: center;color:"+this.settings.color+"}";
             $element.append("<style>" + styles + "</style>");
         },
         renderEmotion: function () {
@@ -166,7 +178,9 @@
     });
 
     $.fn[pluginName] = function(options) {
+        // Iterate through each DOM element and return it
         return this.each(function() {
+            // prevent multiple instantiations
             if (!$.data(this, 'plugin_' + pluginName)) {
                 $.data(this, 'plugin_' + pluginName, new Plugin(this, options));
             }
@@ -175,7 +189,11 @@
 
     var getEmotion = function(_emotions,count) {
         var emotion;
-        emotion = emotionsArray[_emotions[count-1]];
+        if (_emotions.length == 1) {
+            emotion = emotionsArray[_emotions[0]];
+        }else{
+            emotion = emotionsArray[_emotions[count-1]];
+        }
         return emotion;
     }
 
