@@ -22,12 +22,15 @@ Preview:
 3. Call the plugin:
 
 	```javascript
+	  // the emotions can be an array 
 	  var emotionsArray = ['angry','disappointed','meh', 'happy', 'inLove'];
+	  // or a single one
+	  var emotionsArray = ['happy'];
 	  jQ("#element").emotionsRating({
 	    emotionSize: 30,
 	    bgEmotion: 'happy',
 	    emotions: emotionsArray,
-	    color: 'pink'
+	    color: '#FF0066' //the color must be expressed with a css code
 	  });
 	```
 
