@@ -73,7 +73,6 @@
         var meta      = this.$el.data(name + '-opts');
         this.opts     = $.extend(this._defaults, options, meta);
         this.init();
-        console.log(this.settings);
     }
     
     //Avoiding conflicts with prototype
