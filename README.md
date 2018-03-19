@@ -30,7 +30,8 @@ Preview:
 	    emotionSize: 30,
 	    bgEmotion: 'happy',
 	    emotions: emotionsArray,
-	    color: '#FF0066' //the color must be expressed with a css code
+		color: '#FF0066' //the color must be expressed with a css code
+		initialRating: 4 //initialize the rating number
 	  });
 	```
 
