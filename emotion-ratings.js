@@ -26,7 +26,8 @@
         color: "#d0a658;",
         emotionSize: 30,
         inputName: "rating",
-        emotionOnUpdate: null
+        emotionOnUpdate: null,
+        initialRating: null
     };
     //the collection of emotions to show on the ratings
     var emotionsArray = {
@@ -95,6 +96,7 @@
             $element.append("<style>" + styles + "</style>");
         },
         renderEmotion: function () {
+            var self = this;
             var count = this.settings.count;
             var bgEmotion = emotionsArray[this.settings.bgEmotion];
             var container = "<div class='emotion-container'>";
@@ -105,8 +107,9 @@
                 container += emotionDiv;
             }
             container += "</div>";
-
+           
             $element.append(container);
+            self.initalRate(this.settings.initialRating);
         },
         clearEmotion: function(content) {
             $element.find(".emotion-style").each( function() {
@@ -152,7 +155,7 @@
                 self.count = count;
 
                 if (!clicked) {
-                    self.appendInput(count);
+                    self.updateInput(count);
                     clicked = true;
                 } else {
                     self.updateInput(count);
@@ -161,6 +164,15 @@
                     self.settings.onUpdate.call(self, count);
                 }
             });
+        },
+        initalRate: function(count) {
+            var self = this;
+           
+            self.showEmotion(count);
+            if (!clicked) {
+                self.appendInput(count);
+                clicked = true;
+            }
         },        
         appendInput: function(count) {
             var _input = "<input type='hidden' class='emoji-rating'" + 
