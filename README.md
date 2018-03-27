@@ -5,6 +5,8 @@ Preview:
 
 ![emotion ratings](https://raw.githubusercontent.com/YanNerio/emotion-ratings/master/preview/previewred.gif)
 
+##Demo
+![Emotion Ratings](http://www.yancinerio.com/emotion-ratings)
 
 ## Usage
 1. Include jQuery >=1.9:
@@ -31,7 +33,8 @@ Preview:
 	    bgEmotion: 'happy',
 	    emotions: emotionsArray,
 	    color: '#FF0066' //the color must be expressed with a css code
-	    initialRating: 4 //initialize the rating number
+		initialRating: 4 //initialize the rating number
+		disabled: true //set if the rating can be changed or not, default is false
 	  });
 	```
 
