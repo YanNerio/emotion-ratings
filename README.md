@@ -6,7 +6,8 @@ Preview:
 ![emotion ratings](https://raw.githubusercontent.com/YanNerio/emotion-ratings/master/preview/previewred.gif)
 
 ##Demo
-![Emotion Ratings](http://www.yancinerio.com/emotion-ratings)
+
+[Emotion Ratings](http://www.yancinerio.com/emotion-ratings)
 
 ## Usage
 1. Include jQuery >=1.9:
