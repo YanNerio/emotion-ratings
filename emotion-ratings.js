@@ -33,18 +33,22 @@
     };
     //the collection of emotions to show on the ratings
     var emotionsArray = {
-          angry: "&#x1F620;",
-          disappointed: "&#x1F61E;",
-          meh: "&#x1F610;", 
-          happy: "&#x1F60A;",
-          smile: "&#x1F603;",
-          wink: "&#x1F609;",
-          laughing: "&#x1F606;",
-          inlove: "&#x1F60D;",
-          heart: "&#x2764;",
-          crying: "&#x1F622;",
-          star: "&#x2B50;",
-        };
+        angry: "&#x1F620;",
+        disappointed: "&#x1F61E;",
+        meh: "&#x1F610;", 
+        happy: "&#x1F60A;",
+        smile: "&#x1F603;",
+        wink: "&#x1F609;",
+        laughing: "&#x1F606;",
+        inlove: "&#x1F60D;",
+        heart: "&#x2764;",
+        crying: "&#x1F622;",
+        star: "&#x2B50;",
+        poop: "&#x1F4A9;",
+        cat: "&#x1F63A;",
+        like: "&#x1F44D;",
+        dislike: "&#x1F44E;"
+      };
    // var clicked = false;//[false,false,false];
     // Plugin constructor
     // This is the boilerplate to set up the plugin to keep our actual logic in one place
