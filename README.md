@@ -7,7 +7,7 @@ Preview:
 
 ## Demo
 
-[Emotion Ratings](http://www.yancinerio.com/emotion-ratings)
+[Emotion Ratings](http://www.yancinerio.com/#/emotion-ratings)
 
 ## Usage
 1. Include jQuery >=1.9:
