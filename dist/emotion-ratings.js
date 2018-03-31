@@ -111,6 +111,8 @@
             $element.append(container);
             if(this.settings.initialRating > 0){
                 this.initalRate(this.settings.initialRating);
+            }else{
+                this.appendInput();
             }
         },
         clearEmotion: function(content) {
@@ -132,8 +134,9 @@
             }
         },
         manageHover: function() {
-            if(!this.settings.disabled){
-                var self = this;
+            var self = this;
+            if(!self.settings.disabled){
+                
                 this.elementContainer.on({
                     mouseenter: function() {
                         var count = parseInt($(this).data("index"), 10);
@@ -151,8 +154,9 @@
             }
         },
         manageClick: function() {
-            if(!this.settings.disabled){
-                var self = this;
+            var self = this;
+            if(!self.settings.disabled){
+                
                 this.elementContainer.on("click", "."+this.styleCode+"", function() {
                     var index = $(this).data("index"),
                     count = parseInt(index, 10);
@@ -179,9 +183,12 @@
             }
         },        
         appendInput: function(count) {
-            var _input = "<input type='hidden' class='"+ this.code +" validate-rating'" + 
-                    " name='" + this.settings.inputName + 
-                    "' value='" + count + "' />";
+            var total = '';
+            if(!count){
+                total = count;
+            }
+            var _input = "<input type='hidden' class='"+ this.code +"' name='" + this.settings.inputName + 
+                    "' value='" + total + "' />";
             
             var div = this.elementContainer;
             div.append(_input);
