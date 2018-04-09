@@ -5,6 +5,8 @@ Preview:
 
 ![emotion ratings](https://raw.githubusercontent.com/YanNerio/emotion-ratings/master/preview/previewred.gif)
 
+![emotion ratings](https://raw.githubusercontent.com/YanNerio/emotion-ratings/master/preview/emotion-ratings-preview.gif)
+
 ## Demo
 
 [Emotion Ratings](http://www.yancinerio.com/#/emotion-ratings)
