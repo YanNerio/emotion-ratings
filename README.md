@@ -1,3 +1,4 @@
+[![npm version](https://badge.fury.io/js/emotion-ratings.svg)](https://badge.fury.io/js/emotion-ratings)
 ## emotion-ratings
 This plugin allows you to create ratings using emojis!
 
@@ -10,6 +11,14 @@ Preview:
 ## Demo
 
 [Emotion Ratings](http://www.yancinerio.com/#/emotion-ratings)
+
+## Installation
+
+You can install `emotion-ratings` component using the *npm* package manager:
+
+```bash
+npm install --save emotion-ratings
+```
 
 ## Usage
 1. Include jQuery >=1.9:
