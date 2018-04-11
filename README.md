@@ -40,6 +40,8 @@ Preview:
 		disabled: true //set if the rating can be changed or not, default is false
 	  });
 	```
+## Contribution
+You can contribute by forking and doing a PR, don't be a jerk, don't steal other's ideas without giving any credits! peace!!
 
 ## License
 
