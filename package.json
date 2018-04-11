@@ -1,0 +1,31 @@
+{
+  "name": "emotion-ratings",
+  "version": "2.0.1",
+  "description": "Emotion Ratings is a lightweight jQuery plugin used to create a simple rating system using custom emoji Unicode characters.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YanNerio/emotion-ratings.git"
+  },
+  "keywords": [
+    "emoji",
+    "ratings",
+    "jquery",
+    "emotion",
+    "rating",
+    "reviews",
+    "reaction"
+  ],
+  "author": {
+    "name": "Yanci Nerio",
+    "url": "http://www.yancinerio.com/#/emotion-ratings"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/YanNerio/emotion-ratings/issues"
+  },
+  "homepage": "https://github.com/YanNerio/emotion-ratings#readme"
+}

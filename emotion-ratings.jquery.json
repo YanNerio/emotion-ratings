@@ -9,7 +9,7 @@
     "reaction",
     "emotion"
   ],
-  "version": "1.0.1",
+  "version": "2.0.1",
   "author": {
     "name": "Yanci Nerio",
     "url": "http://www.yancinerio.com/#/emotion-ratings"
@@ -27,7 +27,7 @@
     }
   ],
   "bugs": "https://github.com/YanNerio/emotion-ratings/issues",
-  "homepage": "http://www.yancinerio.com/#/emotion-ratings",
+  "homepage": "https://github.com/YanNerio/emotion-ratings",
   "docs": "https://github.com/YanNerio/emotion-ratings#readme",
   "download": "https://github.com/Yannerio/emotion-ratins/archive/master.zip",
   "dependencies": {

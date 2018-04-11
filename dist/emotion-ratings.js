@@ -3,7 +3,7 @@
  * Emotions Rating - Yanci Nerio *
  *********************************
  * Emotions Rating
- * Version: 2.0.0
+ * Version: 2.0.1
  * URL: https://github.com/YanNerio/emotion-ratings
  * Description: This plugin allows you to create ratings using emojis
  * Requires: >= 1.9
