@@ -45,8 +45,9 @@ npm install --save emotion-ratings
 	    bgEmotion: 'happy',
 	    emotions: emotionsArray,
 	    color: '#FF0066', //the color must be expressed with a css code
-		initialRating: 4, //initialize the rating number
-		disabled: true //set if the rating can be changed or not, default is false
+            initialRating: 4, //initialize the rating number
+	    disabled: true, //set if the rating can be changed or not, default is false
+	    onUpdate: function(value) {} //set value changed event handler
 	  });
 	```
 ## Contribution
