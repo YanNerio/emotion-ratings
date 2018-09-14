@@ -51,7 +51,7 @@ npm install --save emotion-ratings
 	  });
 	```
 ## Contribution
-You can contribute by forking and doing a PR, don't be a jerk, don't steal other's ideas without giving any credits! peace!!
+You can contribute by forking and doing a PR.
 
 ## License
 
