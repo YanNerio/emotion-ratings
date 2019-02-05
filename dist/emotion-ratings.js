@@ -29,6 +29,7 @@
         ratingCode: 5,
         disabled: false,
         useCustomEmotions: false,
+        transformImages: false,
     };
     //the collection of emotions to show on the ratings
     var emotionsArray = {
@@ -117,6 +118,10 @@
             }else{
                 this.appendInput();
             }
+
+            if(this.settings.transformImages){
+                this.transformImgsToSVG();
+            }
         },
         clearEmotion: function(content) {
             if(!this.settings.disabled){
@@ -131,7 +136,7 @@
                       $(this).css("opacity", 0.3);
                       $(this).html(bgEmotion);
                 });
-            }       
+            }
         },
         showEmotion: function(count) {
             this.clearEmotion(this.settings.bgEmotion);
@@ -147,10 +152,14 @@
                 this.elementContainer.find("."+this.styleCode+"").eq(i).css("opacity", 1);
                 this.elementContainer.find("."+this.styleCode+"").eq(i).html(emotion);
             }
+            if(this.settings.transformImages){
+                this.transformImgsToSVG();
+            }
+            
         },
         manageHover: function() {
             var self = this;
-            if(!self.settings.disabled){
+            if(!self.settings.disabled && !self.settings.transformImages){
                 
                 this.elementContainer.on({
                     mouseenter: function() {
@@ -212,6 +221,31 @@
             var _input = this.elementContainer.find("input."+this.code+"");
 
             _input.val(count);
+        },
+        transformImgsToSVG: function(){
+            // Based in https://bit.ly/2S5Onvx
+            this.elementContainer.find('img[src$=".svg"]').each(function(){
+                var $img = jQuery(this);
+                var imgURL = $img.attr('src');
+                var attributes = $img.prop("attributes");
+
+                $.get(imgURL, function(data) {
+                  // Get the SVG tag, ignore the rest
+                  var $svg = jQuery(data).find('svg');
+
+                  // Remove any invalid XML tags
+                  $svg = $svg.removeAttr('xmlns:a');
+
+                  // Loop through IMG attributes and apply on SVG
+                  $.each(attributes, function() {
+                    $svg.attr(this.name, this.value);
+                  });
+
+                  // Replace IMG with SVG
+                  $img.replaceWith($svg);
+                }, 'xml');
+
+            });
         }
     });
 
