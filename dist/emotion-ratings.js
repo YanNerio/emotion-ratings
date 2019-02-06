@@ -21,15 +21,15 @@
     // Default options for the plugin as a simple object
     var defaults = {
         bgEmotion: "happy",
-        emotionsCollection: ['angry','disappointed','meh', 'happy', 'inlove'],
         count: 5,
         color: "#d0a658;",
         emotionSize: 30,
         inputName: "ratings[]",
         emotionOnUpdate: null,
         ratingCode: 5,
-        disabled: false
-
+        disabled: false,
+        useCustomEmotions: false,
+        transformImages: false,
     };
     //the collection of emotions to show on the ratings
     var emotionsArray = {
@@ -49,12 +49,11 @@
         like: "&#x1F44D;",
         dislike: "&#x1F44E;"
       };
-   // var clicked = false;//[false,false,false];
+
     // Plugin constructor
     // This is the boilerplate to set up the plugin to keep our actual logic in one place
     function Plugin(element, options) {
         this.element = element;
-
         // Merge the options given by the user with the defaults
         this.settings = $.extend( {}, defaults, options );
         // Attach data to the element
@@ -98,9 +97,14 @@
             $element.append("<style>" + styles + "</style>");
         },
         renderEmotion: function () {
-           
             var count = this.settings.count;
+            var useCustomEmotions = this.settings.useCustomEmotions;
             var bgEmotion = emotionsArray[this.settings.bgEmotion];
+
+            if(useCustomEmotions){
+              bgEmotion = "<img src='"+this.settings.bgEmotion+"' class='custom-"+this.styleCode+"'>";
+            }
+
             var container = "<div class='"+this.containerCode+"'>";
             var emotionDiv;
             for (var i = 1; i <= count; i++) {
@@ -114,28 +118,48 @@
             }else{
                 this.appendInput();
             }
+
+            if(this.settings.transformImages){
+                this.transformImgsToSVG();
+            }
         },
         clearEmotion: function(content) {
             if(!this.settings.disabled){
+                var useCustomEmotions = this.settings.useCustomEmotions;
+                var bgEmotion = emotionsArray[content];
+
+                if(useCustomEmotions){
+                  bgEmotion = "<img src='"+this.settings.bgEmotion+"' class='custom-"+this.styleCode+"'>";
+                }
+
                 this.elementContainer.find("."+this.styleCode+"").each( function() {
-                    $(this).css("opacity", 0.3);
-                    var bgEmotion = emotionsArray[content];
-                    $(this).html(bgEmotion);
+                      $(this).css("opacity", 0.3);
+                      $(this).html(bgEmotion);
                 });
             }
-            
         },
         showEmotion: function(count) {
             this.clearEmotion(this.settings.bgEmotion);
-            var emotion = getEmotion(this.settings.emotions,count);
+            var useCustomEmotions = this.settings.useCustomEmotions;
+            var emotion = getEmotion(this.settings.emotions,count,useCustomEmotions);
+
+            if(useCustomEmotions){
+              emotion = this.settings.emotions[emotion];
+              emotion = "<img src='"+emotion+"' class='custom-"+this.styleCode+"'>";
+            }
+
             for (var i = 0; i < count; i++) {               
                 this.elementContainer.find("."+this.styleCode+"").eq(i).css("opacity", 1);
                 this.elementContainer.find("."+this.styleCode+"").eq(i).html(emotion);
             }
+            if(this.settings.transformImages){
+                this.transformImgsToSVG();
+            }
+            
         },
         manageHover: function() {
             var self = this;
-            if(!self.settings.disabled){
+            if(!self.settings.disabled && !self.settings.transformImages){
                 
                 this.elementContainer.on({
                     mouseenter: function() {
@@ -197,6 +221,31 @@
             var _input = this.elementContainer.find("input."+this.code+"");
 
             _input.val(count);
+        },
+        transformImgsToSVG: function(){
+            // Based in https://bit.ly/2S5Onvx
+            this.elementContainer.find('img[src$=".svg"]').each(function(){
+                var $img = jQuery(this);
+                var imgURL = $img.attr('src');
+                var attributes = $img.prop("attributes");
+
+                $.get(imgURL, function(data) {
+                  // Get the SVG tag, ignore the rest
+                  var $svg = jQuery(data).find('svg');
+
+                  // Remove any invalid XML tags
+                  $svg = $svg.removeAttr('xmlns:a');
+
+                  // Loop through IMG attributes and apply on SVG
+                  $.each(attributes, function() {
+                    $svg.attr(this.name, this.value);
+                  });
+
+                  // Replace IMG with SVG
+                  $img.replaceWith($svg);
+                }, 'xml');
+
+            });
         }
     });
 
@@ -210,12 +259,17 @@
         });
     };
 
-    var getEmotion = function(_emotions,count) {
+    var getEmotion = function(_emotions,count, onlyIndex = false) {
         var emotion;
-        if (_emotions.length == 1) {
-            emotion = emotionsArray[_emotions[0]];
+        var emotionsLength = _emotions.length;
+        if (emotionsLength == 1) {
+            emotion = onlyIndex ? 0 : emotionsArray[_emotions[0]];
         }else{
-            emotion = emotionsArray[_emotions[count-1]];
+          var emotionIndex = (count-1);
+          emotion = onlyIndex 
+                  ? (emotionIndex > (emotionsLength-1)) 
+                      ? (emotionsLength-1) : emotionIndex 
+                  : emotionsArray[_emotions[count-1]];
         }
         return emotion;
     }
