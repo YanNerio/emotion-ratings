@@ -87,6 +87,8 @@ If you want to change the size of the image, you can directly modify the _css_, 
 ## Contribution
 You can contribute by forking and doing a PR.
 
+Active contributors: @moudev 
+
 ## License
 
 [MIT License](http://yancinerio.mit-license.org/) © Yanci Nerio
